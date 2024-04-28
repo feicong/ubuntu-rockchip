@@ -52,6 +52,20 @@ jobs:
         shell: bash
         run: sudo ./build.sh --board=orangepi-5-plus --project=preinstalled-server --release=jammy --kernel=rockchip-${{ matrix.version }} --kernel-only
 
+      - name: Upload
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: rockchip_linux_defconfig-${{ matrix.version }}
+          path: ./build/linux-rockchip/arch/arm64/configs/rockchip_linux_defconfig
+          if-no-files-found: error
+
+      - name: Upload
+        uses: actions/upload-artifact@v4.3.1
+        with:
+          name: jammy-orangepi-5-plus-kernel-${{ matrix.version }}
+          path: ./build/*.deb
+          if-no-files-found: error
+
       - name: Upload Kernel to release
         uses: ncipollo/release-action@main
         with:
@@ -62,4 +76,4 @@ jobs:
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            The kernel for orangepi-5-plus.
+            The kernel for rk3588 sbc, eg orangepi-5-plus.
