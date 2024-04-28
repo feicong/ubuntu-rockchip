@@ -1,8 +1,8 @@
 name: Build rk3588 kernel for rockchip linux
 
 on:
-  schedule:
-    - cron: "0 22 * * *"
+  # schedule:
+  #   - cron: "0 22 * * *"
   push:
     branches:
       - main
