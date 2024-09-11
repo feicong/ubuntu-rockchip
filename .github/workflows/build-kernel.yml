@@ -55,13 +55,6 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: rockchip_linux_defconfig-${{ matrix.version }}
-          path: ./build/linux-rockchip/arch/arm64/configs/rockchip_linux_defconfig
-          if-no-files-found: error
-
-      - name: Upload
-        uses: actions/upload-artifact@v4.3.1
-        with:
           name: jammy-orangepi-5-plus-kernel-${{ matrix.version }}
           path: ./build/*.deb
           if-no-files-found: error
