@@ -23,22 +23,8 @@ jobs:
     name: Build kernel 
 
     steps:
-      - name: Get more disk space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
-
       - name: Checkout code
         uses: actions/checkout@v4
-
-      - name: Checkout LFS
-        shell: bash
-        run: git lfs fetch && git lfs checkout
 
       - name: Install dependencies
         shell: bash
@@ -58,6 +44,12 @@ jobs:
           rm -rf *
           git clone https://github.com/Joshua-Riek/ubuntu-rockchip --depth 1
           mv ubuntu-rockchip/* .
+          mkdir -p build/
+          pushd build
+          git clone https://github.com/Joshua-Riek/linux-rockchip -b ${{ matrix.suite }}  --depth 1
+          wget https://raw.githubusercontent.com/feicong/linux-rockchip/refs/heads/${{ matrix.suite }}/debian.rockchip/config/config.common.ubuntu
+          mv config.common.ubuntu linux-rockchip/debian.rockchip/config/
+          popd
           sudo ./build.sh --board=orangepi-5-plus --suite ${{ matrix.suite }} --flavor desktop --kernel-only
 
       - name: Upload
@@ -78,3 +70,4 @@ jobs:
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
             The kernel for rk3588 sbc, eg orangepi-5-plus.
+            
