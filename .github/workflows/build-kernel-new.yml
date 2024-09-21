@@ -69,5 +69,10 @@ jobs:
           replacesArtifacts: true
           token: ${{ secrets.GITHUB_TOKEN }}
           body: |
-            The kernel for rk3588 sbc, eg orangepi-5-plus.
+            The kernel enable all eBPF features for rk3588 sbc, eg orangepi-5-plus.
+
+            https://github.com/feicong/ebpf-course
             
+            linux-*5.10.*.deb -> jammy
+            linux-*6.1.*.deb -> noble
+            linux-*6.11.*.deb -> oracular
