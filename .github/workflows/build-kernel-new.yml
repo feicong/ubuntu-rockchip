@@ -1,4 +1,4 @@
-name: Build rk3588 kernel 6.x for rockchip linux
+name: Build rk3588 kernel for rockchip linux
 
 on:
   # schedule:
@@ -55,7 +55,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: jammy-orangepi-5-plus-kernel-${{ matrix.suite }}
+          name: ubuntu-orangepi-5-plus-kernel-${{ matrix.suite }}
           path: ./build/*.deb
           if-no-files-found: error
 
@@ -72,7 +72,7 @@ jobs:
             The kernel enable all eBPF features for rk3588 sbc, eg orangepi-5-plus.
 
             https://github.com/feicong/ebpf-course
-            
+
             linux-*5.10.*.deb -> jammy
             linux-*6.1.*.deb -> noble
             linux-*6.11.*.deb -> oracular
