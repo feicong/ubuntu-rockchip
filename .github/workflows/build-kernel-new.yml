@@ -1,4 +1,4 @@
-name: Build rk3588 kernel for rockchip linux
+name: Build rk3588 6.x kernel for rockchip linux
 
 on:
   # schedule:
@@ -8,7 +8,7 @@ on:
       - main
   workflow_dispatch:
 
-run-name: Build rk3588 kernel with rockchip linux
+run-name: Build rk3588 6.x kernel with rockchip linux
 
 jobs:
   kernel:
