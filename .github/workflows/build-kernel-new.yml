@@ -55,7 +55,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: ubuntu-orangepi-5-plus-kernel-${{ matrix.suite }}
+          name: ubuntu-kernel-${{ matrix.suite }}
           path: ./build/*.deb
           if-no-files-found: error
 
@@ -76,3 +76,4 @@ jobs:
             linux-*5.10.*.deb -> jammy
             linux-*6.1.*.deb -> noble
             linux-*6.11.*.deb -> oracular
+            
