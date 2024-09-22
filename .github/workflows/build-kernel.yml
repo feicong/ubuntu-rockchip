@@ -19,16 +19,6 @@ jobs:
     name: Build kernel 
 
     steps:
-      - name: Get more disk space
-        uses: jlumbroso/free-disk-space@main
-        with:
-          tool-cache: false
-          android: true
-          dotnet: true
-          haskell: true
-          large-packages: true
-          swap-storage: true
-
       - name: Checkout code
         uses: actions/checkout@v4
 
@@ -55,7 +45,7 @@ jobs:
       - name: Upload
         uses: actions/upload-artifact@v4.3.1
         with:
-          name: jammy-orangepi-5-plus-kernel-${{ matrix.version }}
+          name: ubuntu-orangepi-5-plus-kernel-${{ matrix.version }}
           path: ./build/*.deb
           if-no-files-found: error
 
